@@ -1,0 +1,15 @@
+● apache2.service - The Apache HTTP Server
+     Loaded: loaded (/usr/lib/systemd/system/apache2.service; disabled; preset: disabled)
+     Active: active (running) since Wed 2025-11-12 10:45:54 IST; 29ms ago
+ Invocation: 0c39bfcf074143409b7ec60dcb717c45
+       Docs: https://httpd.apache.org/docs/2.4/
+    Process: 19394 ExecStart=/usr/sbin/apachectl start (code=exited, status=0/SUCCESS)
+   Main PID: 19410 (apache2)
+      Tasks: 1 (limit: 2118)
+     Memory: 17.2M (peak: 17.2M)
+        CPU: 96ms
+     CGroup: /system.slice/apache2.service
+             └─19410 /usr/sbin/apache2 -k start
+
+Nov 12 10:45:54 kali systemd[1]: Starting apache2.service - The Apache HTTP Server...
+Nov 12 10:45:54 kali systemd[1]: Started apache2.service - The Apache HTTP Server.

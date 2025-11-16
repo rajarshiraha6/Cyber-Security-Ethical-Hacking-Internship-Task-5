@@ -1,0 +1,46 @@
+Title — Exploitation & Evidence
+Date: 2025-11-12
+Author: Rajarshi Raha
+
+1) Lab setup
+- Attacker (Kali): 192.168.56.102
+- Target (Metasploitable2 / DVWA): 192.168.56.101
+- Network: Host-only
+
+2) Recon summary
+- Ping to target: SUCCESS (4 packets received)
+- Nmap high-level: open ports found: 21 (ftp), 22 (ssh), 80 (http), 3306 (mysql)
+- Noted service versions: vsftpd ? (banner not confirmed), Apache 2.2.x
+
+3) Exploitation attempts
+- Module used: exploit/unix/ftp/vsftpd_234_backdoor (Metasploit)
+- Command & settings:
+  - set RHOSTS 192.168.56.101
+  - set RPORT 21
+  - set VERBOSE true
+  - spool enabled to save msf output
+- Result: `Exploit completed, but no session was created.`  
+  - Additional message: `Rex::HostUnreachable` observed → indicates connectivity or service reachability issues at time of exploitation.
+
+4) Evidence collected
+- Ping output: ~/task5/scans/ping_19216856_101_20251112_101500.log
+- Nmap port scan: ~/task5/scans/nmap_port21_20251112_101520.log
+- Netcat banner attempt: ~/task5/scans/nc_21_banner_20251112_101530.log
+- Metasploit spool: ~/task5/notes/msf_spool_20251112_101540.log
+
+5) Analysis / Reasons exploit failed
+- Port 21 may have been filtered or temporarily unreachable.
+- Target may not be running vsftpd 2.3.4 (exploit only works for that version).
+- Reverse connection from payload may have been blocked by firewall or wrong LHOST setting.
+
+6) Mitigation / Recommendations
+- Ensure target services are patched (patch vsftpd or remove vulnerable version).
+- Harden network rules and only allow necessary services.
+- For lab: verify service versions before running exploit modules.
+
+7) Next steps
+- Re-run `nmap -sV` and `nc` to confirm FTP banner/version.
+- If vsftpd 2.3.4 confirmed, ensure LHOST is set and try alternate payloads.
+- Try other discovered vectors (e.g., HTTP vulnerabilities) if FTP is not vulnerable.
+
+

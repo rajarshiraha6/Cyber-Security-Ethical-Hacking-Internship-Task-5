@@ -1,0 +1,3 @@
+Wednesday 12 November 2025 10:41:27 AM IST - apache stopped
+Wednesday 12 November 2025 10:41:54 AM IST - blocked IP 192.168.56.101
+Wednesday 12 November 2025 10:42:45 AM IST - removed suspicious_file.php

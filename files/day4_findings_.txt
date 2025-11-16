@@ -1,0 +1,8 @@
+Summary: (one or two lines)
+Findings:
+- What happened:
+- Evidence files:
+- Actions taken:
+Recommendations:
+- Patch or sanitize inputs
+- Add monitoring rules (grep commands shown)
